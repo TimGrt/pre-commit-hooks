@@ -57,7 +57,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("files", nargs="*")
     parser.add_argument(
         "--pattern",
-        default="^[a-z][a-zA-Z\_]+$",
+        default="^[a-z][a-zA-Z\-]+$",
         help=("regex pattern for file names not allowed to commit"),
     )
     args = parser.parse_args(argv)
