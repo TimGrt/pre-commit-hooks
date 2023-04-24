@@ -8,5 +8,5 @@ setup(
     description="Pre-commit hook the check file names for compliance",
     author="Tim Gruetzmacher",
     url="https://github.com/TimGrt/pre-commit-hooks/",
-    py_modules=["pre_commit_hooks.check-file-names"],
+    scripts=["pre_commit_hooks/check-file-names.py"],
 )
