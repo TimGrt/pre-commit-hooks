@@ -15,10 +15,10 @@ For example:
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-    rev: v0.1.0
-    hooks:
-      - id: check-file-names
-        args: ['--pattern', '^[a-z][a-zA-Z\_]+$']
+  rev: v0.1.0
+  hooks:
+    - id: check-file-names
+      args: ['--pattern', '^[a-z][a-zA-Z\_]+$']
 ```
 
 This would allow filenames with underscores.
@@ -27,10 +27,10 @@ In case you need to exclude more file, add the `exclude` parameter.
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-    rev: v0.1.0
-    hooks:
-      - id: check-file-names
-        exclude: ^\.|README|Readme|LICENSE.*$
+  rev: v0.1.0
+  hooks:
+    - id: check-file-names
+      exclude: ^\.|README|Readme|LICENSE.*$
 ```
 
 This is a regular expression, files called *Readme*, *README*, *LICENSE* and
