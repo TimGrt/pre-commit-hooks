@@ -1,0 +1,7 @@
+- id: check-filenames
+  name: Check files for non-compliant names
+  description: This hook ensures that filenames by default only consist of lowercase and uppercase characters and dashes.
+  entry: check-file-names
+  language: python
+  types: [file]
+  exclude: ^\.|README|Readme.*$
