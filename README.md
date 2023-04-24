@@ -2,6 +2,8 @@
 
 Git Hooks for the pre-commit framework.  
 
+[![CodeFactor](https://www.codefactor.io/repository/github/timgrt/pre-commit-hooks/badge)](https://www.codefactor.io/repository/github/timgrt/pre-commit-hooks)
+
 ## check-file-names
 
 Checks that all files comply to a given naming scheme.  
