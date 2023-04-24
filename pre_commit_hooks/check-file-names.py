@@ -7,12 +7,14 @@ import argparse
 
 from typing import Any, Sequence
 
+
 class CalledProcessError(RuntimeError):
     pass
 
+
 def cmd_output(*cmd: str, retcode: int | None = 0, **kwargs: Any) -> str:
-    kwargs.setdefault('stdout', subprocess.PIPE)
-    kwargs.setdefault('stderr', subprocess.PIPE)
+    kwargs.setdefault("stdout", subprocess.PIPE)
+    kwargs.setdefault("stderr", subprocess.PIPE)
     proc = subprocess.Popen(cmd, **kwargs)
     stdout, stderr = proc.communicate()
     stdout = stdout.decode()
@@ -20,8 +22,8 @@ def cmd_output(*cmd: str, retcode: int | None = 0, **kwargs: Any) -> str:
         raise CalledProcessError(cmd, retcode, proc.returncode, stdout, stderr)
     return stdout
 
-def validate_regex_pattern(pattern: str):
 
+def validate_regex_pattern(pattern: str):
     # pattern is a string containing the regex pattern
     try:
         re.compile(pattern)
@@ -31,8 +33,9 @@ def validate_regex_pattern(pattern: str):
 
 
 def check_filenames(files: Sequence[str], pattern: str) -> int:
-
-    staged_files = set(cmd_output('git', 'diff', '--staged', '--name-only', *files).splitlines())
+    staged_files = set(
+        cmd_output("git", "diff", "--staged", "--name-only", *files).splitlines()
+    )
     invalid_files = []
 
     validate_regex_pattern(pattern)
@@ -43,20 +46,19 @@ def check_filenames(files: Sequence[str], pattern: str) -> int:
 
     if invalid_files:
         for file in sorted(invalid_files):
-            print(f'File does not comply to standards: {file}')
+            print(f"File does not comply to standards: {file}")
         return 1
     else:
         return 0
 
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("files", nargs="*")
     parser.add_argument(
-        'files', nargs='*'
-        )
-    parser.add_argument(
-        '--pattern',
-        default='^[a-z][a-zA-Z\_]+$',
-        help=('regex pattern for file names not allowed to commit')
+        "--pattern",
+        default="^[a-z][a-zA-Z\_]+$",
+        help=("regex pattern for file names not allowed to commit"),
     )
     args = parser.parse_args(argv)
 
@@ -64,5 +66,6 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     return check_filenames(args.files, args.pattern)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     raise SystemExit(main())
