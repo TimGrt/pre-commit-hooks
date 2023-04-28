@@ -5,3 +5,10 @@
     language: script
     types: [file]
     exclude: ^\.|README|Readme.*$
+-   id: check-vault-files
+    name: Check for files encrypted with ansible-vault
+    description: This hook ensures that files with 'vault' in filename are encrypted with ansible-vault.
+    entry: check-vault-encryption.py
+    language: script
+    types: [file]
+    files: '^.*vault.*$'
