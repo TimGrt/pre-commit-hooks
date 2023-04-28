@@ -4,6 +4,34 @@ Git Hooks for the pre-commit framework.
 
 [![CodeFactor](https://www.codefactor.io/repository/github/timgrt/pre-commit-hooks/badge)](https://www.codefactor.io/repository/github/timgrt/pre-commit-hooks)
 
+## check-vault-encryption
+
+Checks that files with a given filename pattern are
+encrypted with *ansible-vault*. By default, all files
+with `vault` in the filename are checked, for example
+a file named `vault.yml` or `variables-vault.yml` are checked.
+
+```yaml
+- repo: https://github.com/timgrt/pre-commit-hooks
+  rev: v0.2.0
+  hooks:
+    - id: check-vault-encryption
+```
+
+Different filenames can be provided with the `files` parameter.
+For example:
+
+```yaml
+- repo: https://github.com/timgrt/pre-commit-hooks
+  rev: v0.2.0
+  hooks:
+    - id: check-vault-encryption
+      files: 'secure.*'
+```
+
+This is a regular expression, files e.g. called *secure-file.yml* will
+now be checked by the hook.
+
 ## check-file-names
 
 Checks that all files comply to a given naming scheme.  
@@ -17,7 +45,7 @@ For example:
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-  rev: v0.1.0
+  rev: v0.2.0
   hooks:
     - id: check-file-names
       args: ['--pattern', '^[a-z][a-zA-Z\_]+$']
@@ -29,7 +57,7 @@ In case you need to exclude more file, add the `exclude` parameter.
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-  rev: v0.1.0
+  rev: v0.2.0
   hooks:
     - id: check-file-names
       exclude: ^\.|README|Readme|LICENSE.*$
