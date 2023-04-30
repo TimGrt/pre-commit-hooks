@@ -4,7 +4,7 @@ Git Hooks for the pre-commit framework.
 
 [![CodeFactor](https://www.codefactor.io/repository/github/timgrt/pre-commit-hooks/badge)](https://www.codefactor.io/repository/github/timgrt/pre-commit-hooks)
 
-## check-vault-encryption
+## check-vault-files
 
 Checks that files with a given filename pattern are
 encrypted with *ansible-vault*. By default, all files
@@ -15,7 +15,7 @@ a file named `vault.yml` or `variables-vault.yml` are checked.
 - repo: https://github.com/timgrt/pre-commit-hooks
   rev: v0.2.0
   hooks:
-    - id: check-vault-encryption
+    - id: check-vault-files
 ```
 
 Different filenames can be provided with the `files` parameter.
@@ -25,7 +25,7 @@ For example:
 - repo: https://github.com/timgrt/pre-commit-hooks
   rev: v0.2.0
   hooks:
-    - id: check-vault-encryption
+    - id: check-vault-files
       files: 'secure.*'
 ```
 
