@@ -13,7 +13,7 @@ a file named `vault.yml` or `variables-vault.yml` are checked.
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-  rev: v0.2.0
+  rev: v0.2.1
   hooks:
     - id: check-vault-files
 ```
@@ -23,7 +23,7 @@ For example:
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-  rev: v0.2.0
+  rev: v0.2.1
   hooks:
     - id: check-vault-files
       files: 'secure.*'
@@ -45,7 +45,7 @@ For example:
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-  rev: v0.2.0
+  rev: v0.2.1
   hooks:
     - id: check-file-names
       args: ['--pattern', '^[a-z][a-zA-Z\_]+$']
@@ -57,7 +57,7 @@ In case you need to exclude more file, add the `exclude` parameter.
 
 ```yaml
 - repo: https://github.com/timgrt/pre-commit-hooks
-  rev: v0.2.0
+  rev: v0.2.1
   hooks:
     - id: check-file-names
       exclude: ^\.|README|Readme|LICENSE.*$
